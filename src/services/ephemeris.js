@@ -1,4 +1,4 @@
-export const ephemerisData = {
+export const ephemerisData = [
     { name: 'Sun', position: '15° Aries' },
     { name: 'Moon', position: '23° Taurus' },
     { name: 'Mercury', position: '5° Gemini' },
@@ -9,7 +9,7 @@ export const ephemerisData = {
     { name: 'Uranus', position: '19° Scorpio' },
     { name: 'Neptune', position: '6° Sagittarius' },
     { name: 'Pluto', position: '110° Capricorn' }
-};
+];
 
 export function getEphemeris() {
     return ephemerisData;
