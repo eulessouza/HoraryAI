@@ -2,3 +2,36 @@ node_modules/
 dist/
 .DS_Store
 .env
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Vite / build
+.vite/
+build/
+
+# Editor directories and files
+.vscode/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+
+# OS files
+Thumbs.db
+ehthumbs.db
+Icon?
+
+# WASM / native cache (node_modules may already cover this, but be explicit)
+*.wasm
+
+# Server data (if you have local ephemerides or other large data not to commit)
+/server/data/
+
+# Environment overrides
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
