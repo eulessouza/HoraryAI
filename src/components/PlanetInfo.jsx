@@ -1,7 +1,7 @@
 import React from "react";
 import { usePlanet } from "../hooks/usePlanet";
 
-const planetInfo = ({ date, planetId }) => {
+const PlanetInfo = ({ date, planetId }) => {
     const { data, loading, error } = usePlanet(date, planetId);
     
     if (loading) return <p>Loading planet data...</p>;
@@ -17,4 +17,4 @@ const planetInfo = ({ date, planetId }) => {
     );
 };
 
-export default planetInfo;
+export default PlanetInfo;

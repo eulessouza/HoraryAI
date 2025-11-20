@@ -2,7 +2,6 @@ import { useState } from "react";
 import { useFetch } from "../hooks/useFetch";
 
 async function fetchPlanet() {
-    // Placeholder function for fetching planet data
 }
 
 export function PlanetFetcher() {
