@@ -2,21 +2,23 @@ import React, { useState } from "react";
 import Card from "../components/ui/Card";
 import Button from "../components/ui/Button";   
 import Input from "../components/ui/Input";
-import Sidebar from "../components/layout/Sidebar";
-import Header from "../components/layout/Header"; 
-import PlanetPosition from "../components/astrology/PlanetPosition"; 
-import { ephemerisData } from "../services/ephemeris"; 
+import PlanetList from "../components/astrology/PlanetList";
+import usePlanet from "../hooks/usePlanet";
 
 export default function HoraryAIChat() {
-    const [selectedPlanet, setSelectedPlanet] = useState(null);
-    const [searchPlanet, setSearchPlanet] = useState("");
+    const [planets, setPlanets] = useState([]);
+    const [search, setSearch] = useState("");
 
     const handleGeneratePosition = () => {
-        const planet = ephemerisData.find(
-            (p) => p.name.toLowerCase() === searchPlanet.toLowerCase()
-        );
-        if (planet) setSelectedPlanet(planet);
-        else alert("Planeta não encontrado!");
+        if (search.trim() === "") {
+            setPlanets(usePlanet()); // Load all planets if no search term is provided
+        } else {
+            const planet = usePlanet().find(
+                (p) => p.name.toLowerCase() === search.trim().toLowerCase()
+            );
+            if (planet) setPlanets([planet]);
+            else alert("Planet not found!");
+        }
     };
 
     return (
@@ -27,18 +29,18 @@ export default function HoraryAIChat() {
                 <Card>
                     <h2>Gerar posição planetaria</h2>
                     <Input 
-                        value={searchPlanet}
-                        onChange={(e) => setSearchPlanet(e.target.value)}
+                        value={search}
+                        onChange={(e) => setSearch(e.target.value)} 
                         placeholder="Digite o planeta" 
                     />
                     <Button onClick={handleGeneratePosition }>Gerar</Button>
                 </Card>
 
-                <Card>
+                <Card>      
                     <h2>Resultado</h2>
                     <p>Aqui aparecerão as posições planetarias</p>
                 </Card>
-                <PlanetPosition planet={selectedPlanet} />
+                <PlanetList planets={planets} />
             </main>
             </div>
         

@@ -1,10 +1,8 @@
-import React, { useState } from "react";
-import Card from "../components/ui/Card";
-import Button from "../components/ui/Button";   
-import Input from "../components/ui/Input";
+import React from "react";
 import Sidebar from "../components/layout/Sidebar";
 import Header from "../components/layout/Header"; 
 import HoraryAIChat from "./HoraryAIChat";
+import PlanetInfo from "../components/PlanetInfo";
 
 export default function Home() {
     return (
@@ -21,7 +19,10 @@ export default function Home() {
                 </ul>       
             </Sidebar>
 
-            <main><HoraryAIChat /></main>
+            <main>
+                <HoraryAIChat />
+                <PlanetInfo date={"2025-11-20"} planetId={0} />
+            </main>
             </div>
         </div>
     )
